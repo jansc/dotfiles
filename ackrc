@@ -1,0 +1,7 @@
+--ignore-dir=PHP
+--ignore-dir=fpdf
+--ignore-dir=PHPUnit
+--ignore-dir=nusoap
+--ignore-dir=getid3
+--type-add=html=.tpl
+--type-set=ltm=.ltm

@@ -1,0 +1,11 @@
+shell -$SHELL
+
+hardstatus alwayslastline "%w"
+
+defscrollback 5000
+
+# I'm used to Ctrl-A for jumping in bash. Makes me crazy.
+escape ^Jj
+
+# Don't cut the terminals scrollback. Thanks, Reidar!
+termcapinfo xterm* ti@:te@

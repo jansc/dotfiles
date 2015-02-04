@@ -1,0 +1,45 @@
+[core]
+    quotepath = false
+[user]
+    name = Jan Schreiber
+    email = jans@ravn.no
+    #email = mail@jschreiber.com
+ 
+# Farger i promptet
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+ 
+# Default editor og gitignore
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+ 
+# Custom colors for diffs and status
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    untracked = yellow
+ 
+# Various shortcuts. Don't use them very often :(
+[alias]
+    co = checkout
+    b = branch
+    a = add
+    nb = checkout -b
+    st = status
+ 
+# Commitencoding
+[i18n]
+    commitencoding = UTF-8
+ 
+# Push only the current branch on git push
+[push]
+    default = tracking
