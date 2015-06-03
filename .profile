@@ -1,0 +1,43 @@
+platform='unknown'
+unamestr=$(uname)
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
+
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH:$HOME/bin"
+export PATH=/usr/local/ravnutilities/bin:$PATH
+export PATH=/usr/local/opt/qt5/bin:$PATH
+
+# GIT bash completion
+if [ -f /usr/share/git-core/git-completion.bash ] ; then
+  . /usr/share/git-core/git-completion.bash
+fi
+
+alias ff='find . -name '
+alias ws='python -m SimpleHTTPServer 9000'
+
+if [[ $platform == 'osx' ]]; then
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+  export PGDATA=/usr/local/var/postgres
+fi
+
+export DISPLAY=:0.0
+export IRCNICK=jansc
+export IRCNAME="Jan Schreiber"
+export PGHOST=127.0.0.1
+export SAUCE_USERNAME=jans
+source .saucekey
+export CLICOLOR=1
+export EDITOR=vim
+
+# Git into the prompt:
+# http://asemanfar.com/Current-Git-Branch-in-Bash-Prompt
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git::\1)/'
+}
+
+export PS1="\[\033[00m\]\u@\h\[\033[01;34m\] \w \[\033[31m\]\$(parse_git_branch) \[\033[00m\]$\[\033[00m\] "
