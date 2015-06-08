@@ -25,6 +25,11 @@ if [[ $platform == 'osx' ]]; then
   export PGDATA=/usr/local/var/postgres
 fi
 
+if [[ $platform == 'linux' ]]; then
+  # Workaround: make HipChat work
+  # see http://notes.ericjiang.com/posts/803
+  export LIBGL_ALWAYS_SOFTWARE=1
+fi
 export DISPLAY=:0.0
 export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
