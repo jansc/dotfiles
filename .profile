@@ -41,3 +41,7 @@ parse_git_branch() {
 }
 
 export PS1="\[\033[00m\]\u@\h\[\033[01;34m\] \w \[\033[31m\]\$(parse_git_branch) \[\033[00m\]$\[\033[00m\] "
+
+# show list of shortcuts
+# See http://zwischenzugs.tk/index.php/2015/07/01/bash-shortcuts-gem/
+alias binds="bind -P | grep 'can be'"
