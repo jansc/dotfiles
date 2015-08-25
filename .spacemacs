@@ -26,6 +26,7 @@
      markdown
      org
      syntax-checking
+     erc
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()

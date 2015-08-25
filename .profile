@@ -23,6 +23,9 @@ alias ws='python -m SimpleHTTPServer 9000'
 if [[ $platform == 'osx' ]]; then
   alias updatedb='sudo /usr/libexec/locate.updatedb'
   export PGDATA=/usr/local/var/postgres
+  PERL_MB_OPT="--install_base \"/Users/jans/perl5\""; export PERL_MB_OPT;
+  PERL_MM_OPT="INSTALL_BASE=/Users/jans/perl5"; export PERL_MM_OPT;
+  PERL5LIB="/Users/jans/perl5/lib/perl5/"; export PERL5LIB;
 fi
 
 if [[ $platform == 'linux' ]]; then
