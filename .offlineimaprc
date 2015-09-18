@@ -1,0 +1,197 @@
+# Offlineimap sample configuration file
+
+##################################################
+# General definitions
+##################################################
+
+[general]
+
+# This variable specifies which accounts are defined.  Separate them
+# with commas.  Account names should be alphanumeric only.
+# You will need to specify one section per account below.  You may
+# not use "general" for an account name.
+
+accounts = Fastmail
+
+# You can specify one or more user interface modules for OfflineIMAP
+# to use.  OfflineIMAP will try the first in the list, and if it
+# fails, the second, and so forth.
+#
+# The pre-defined options are:
+# Blinkenlights -- A fancy (terminal) interface
+# TTYUI         -- a text-based (terminal) interface
+# Basic         -- Noninteractive interface suitable for cron'ing
+# Quiet         -- Noninteractive interface, generates no output
+#                  except for errors.
+# MachineUI     -- Interactive interface suitable for machine
+#                  parsing.
+#
+# You can override this with a command-line option -u.
+
+#ui = basic
+ui = ttyui
+
+# If you try to synchronize messages to a folder which the IMAP server
+# considers read-only, OfflineIMAP will generate a warning.  If you want
+# to suppress these warnings, set ignore-readonly to yes.  Read-only
+# IMAP folders allow reading but not modification, so if you try to
+# change messages in the local copy of such a folder, the IMAP server
+# will prevent OfflineIMAP from propagating those changes to the IMAP
+# server.  Note that ignore-readonly is unrelated to the "readonly"
+# setting which prevents a repository from being modified at all.
+
+#ignore-readonly = no
+
+########## Advanced settings
+
+##################################################
+# Mailbox name recorder
+##################################################
+
+[mbnames]
+
+# offlineimap can record your mailbox names in a format you specify.
+# You can define the header, each mailbox item, the separator,
+# and the footer.  Here is an example for Mutt.
+# If enabled is yes, all six setting must be specified, even if they
+# are just the empty string "".
+#
+# The header, peritem, sep, and footer are all Python expressions passed
+# through eval, so you can (and must) use Python quoting.
+#
+# The following hash key are available to the expansion for 'peritem':
+# - accountname: the name of the corresponding account;
+# - foldername: the name of the folder;
+# - localfolders: path to the local directory hosting all Maildir
+#   folders for the account.
+
+enabled = no
+filename = ~/imap/mu4e.mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+##################################################
+# Accounts
+##################################################
+
+# This is an account definition clause.  You'll have one of these
+# for each account listed in general/accounts above.
+
+[Account Fastmail]
+########## Basic settings
+
+# These settings specify the two folders that you will be syncing.
+# You'll need to have a "Repository ..." section for each one.
+
+localrepository = LocalFastmail
+remoterepository = RemoteFastmail
+
+########## Advanced settings
+
+# You can have offlineimap continue running indefinitely, automatically
+# syncing your mail periodically.  If you want that, specify how
+# frequently to do that (in minutes) here.  You can also specify
+# fractional minutes (ie, 3.25).
+
+# autorefresh = 3
+
+# When you are starting to sync an already existing account you can tell
+# offlineimap to sync messages from only the last x days.  When you do
+# this messages older than x days will be completely ignored.  This can
+# be useful for importing existing accounts when you do not want to
+# download large amounts of archive email.
+#
+# Messages older than maxage days will not be synced, their flags will
+# not be changed, they will not be deleted etc.  For offlineimap it will
+# be like these messages do not exist.  This will perform an IMAP search
+# in the case of IMAP or Gmail and therefore requires that the server
+# support server side searching.  This will calculate the earliest day
+# that would be included in the search and include all messages from
+# that day until today.  e.g. maxage = 3 to sync only the last 3 days
+# mail
+#
+maxage = 3
+
+# Specifies if we want to sync GMail lables with the local repository.
+# Effective only for GMail IMAP repositories.
+#
+synclabels = yes
+
+# Name of the header to use for label storage.  Format for the header
+# value differs for different headers, because there are some de-facto
+# standards set by popular clients:
+# - X-Label or Keywords keep values separated with spaces; for these
+#   you, obviously, should not have label values that contain spaces;
+# - X-Keywords use comma (',') as the separator.
+# To be consistent with the usual To-like headers, for the rest of header
+# types we use comma as the separator.
+#
+#labelsheader = X-Keywords
+
+# Set of labels to be ignored.  Comma-separated list.  GMail-specific
+# labels all start with backslash ('\').
+#
+#ignorelabels = \Inbox, \Starred, \Sent, \Draft, \Spam, \Trash, \Important
+
+
+[Repository LocalFastmail]
+
+# Each repository requires a "type" declaration. The types supported for
+# local repositories are Maildir, GmailMaildir and IMAP.
+
+type = Maildir
+
+# Specify local repository.  Your IMAP folders will be synchronized
+# to maildirs created under this path.  OfflineIMAP will create the
+# maildirs for you as needed.
+
+localfolders = ~/imap/fastmail
+
+[Repository RemoteFastmail]
+# And this is the remote repository.  We only support IMAP or Gmail here.
+
+type = IMAP
+
+# Specify the remote hostname.
+remotehost = mail.messagingengine.com
+
+# Whether or not to use SSL.
+ssl = yes
+
+# SSL Client certificate (optional)
+# sslclientcert = /path/to/file.crt
+
+# SSL Client key (optional)
+# sslclientkey = /path/to/file.key
+
+# SSL CA Cert(s) to verify the server cert against (optional).
+# No SSL verification is done without this option. If it is
+# specified, the CA Cert(s) need to verify the Server cert AND
+# match the hostname (* wildcard allowed on the left hand side)
+# The certificate should be in PEM format.
+# sslcacertfile = /path/to/cacertfile.crt
+
+# If you connect via SSL/TLS (ssl=true) and you have no CA certificate
+# specified, offlineimap will refuse to sync as it connects to a server
+# with an unknown "fingerprint". If you are sure you connect to the
+# correct server, you can then configure the presented server
+# fingerprint here. OfflineImap will verify that the server fingerprint
+# has not changed on each connect and refuse to connect otherwise.
+# You can also configure this in addition to CA certificate validation
+# above and it will check both ways.
+#
+# Multiple fingerprints can be specified, separated by commas.
+#
+# Fingerprints must be in hexadecimal form without leading '0x':
+# 40 hex digits like bbfe29cf97acb204591edbafe0aa8c8f914287c9.
+
+cert_fingerprint = 958b1601563aef92607a41eb5bad22e3cace8431
+
+# Specify the remote user name.
+remoteuser = mecinus@fastmail.fm
+
+########## Passwords
+
+remotepassfile = ~/.fastmail.txt
