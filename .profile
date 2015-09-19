@@ -38,7 +38,7 @@ export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
 export SAUCE_USERNAME=jans
-source .saucekey
+source ~/.saucekey
 export CLICOLOR=1
 export EDITOR=vim
 
