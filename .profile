@@ -28,11 +28,11 @@ if [[ $platform == 'osx' ]]; then
   PERL5LIB="/Users/jans/perl5/lib/perl5/"; export PERL5LIB;
 fi
 
-if [[ $platform == 'linux' ]]; then
+#if [[ $platform == 'linux' ]]; then
   # Workaround: make HipChat work
   # see http://notes.ericjiang.com/posts/803
-  export LIBGL_ALWAYS_SOFTWARE=1
-fi
+  #export LIBGL_ALWAYS_SOFTWARE=1
+#fi
 export DISPLAY=:0.0
 export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
@@ -53,3 +53,5 @@ export PS1="\[\033[00m\]\u@\h\[\033[01;34m\] \w \[\033[31m\]\$(parse_git_branch)
 # show list of shortcuts
 # See http://zwischenzugs.tk/index.php/2015/07/01/bash-shortcuts-gem/
 alias binds="bind -P | grep 'can be'"
+
+alias prettyjson='python -m json.tool'  
