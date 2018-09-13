@@ -16,9 +16,10 @@ export PATH=/usr/local/opt/qt5/bin:$PATH
 if [ -f /usr/share/git-core/git-completion.bash ] ; then
   . /usr/share/git-core/git-completion.bash
 fi
+if [ -f /etc/profile.d/bash_completion.sh ] ; then
+  source /etc/profile.d/bash_completion.sh
+fi
 
-alias ff='find . -name '
-alias ws='python -m SimpleHTTPServer 9000'
 
 if [[ $platform == 'osx' ]]; then
   alias updatedb='sudo /usr/libexec/locate.updatedb'
@@ -28,17 +29,10 @@ if [[ $platform == 'osx' ]]; then
   PERL5LIB="/Users/jans/perl5/lib/perl5/"; export PERL5LIB;
 fi
 
-#if [[ $platform == 'linux' ]]; then
-  # Workaround: make HipChat work
-  # see http://notes.ericjiang.com/posts/803
-  #export LIBGL_ALWAYS_SOFTWARE=1
-#fi
 export DISPLAY=:0.0
 export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
-export SAUCE_USERNAME=jans
-source ~/.saucekey
 export CLICOLOR=1
 export EDITOR=vim
 
@@ -53,5 +47,9 @@ export PS1="\[\033[00m\]\u@\h\[\033[01;34m\] \w \[\033[31m\]\$(parse_git_branch)
 # show list of shortcuts
 # See http://zwischenzugs.tk/index.php/2015/07/01/bash-shortcuts-gem/
 alias binds="bind -P | grep 'can be'"
-
 alias prettyjson='python -m json.tool'  
+alias ff='find . -name '
+alias ws='python -m http.server 9000'
+
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
