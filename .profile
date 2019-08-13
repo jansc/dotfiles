@@ -11,6 +11,7 @@ fi
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH:$HOME/bin"
 export PATH=/usr/local/ravnutilities/bin:$PATH
 export PATH=/usr/local/opt/qt5/bin:$PATH
+export PATH=$HOME/.roswell/bin:$PATH
 
 # GIT bash completion
 if [ -f /usr/share/git-core/git-completion.bash ] ; then
@@ -53,3 +54,8 @@ alias ws='python -m http.server 9000'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# Set up Node Version Manager
+source /usr/share/nvm/init-nvm.sh
+
+SBCL_HOME=/usr/lib/sbcl
