@@ -155,6 +155,7 @@
 (require 'emacs-erc)            ; IRC client
 (require 'emacs-company)        ; Company-mode for autocompletion
 (require 'emacs-elfeed)         ; RSS-reader
+(require 'emacs-gopher)         ; Emacs Gopher client
 (require 'emacs-ido)            ; buffer matching
 (require 'emacs-misc)           ; various settings
 (require 'emacs-magit)
