@@ -25,10 +25,16 @@ conky.config = {
 	no_buffers = true,
 	uppercase = false,
 	cpu_avg_samples = 2,
-	override_utf8_locale = false
+	override_utf8_locale = false,
+	own_window = true,
+        own_window_transparent = true,
+	own_window_argb_visual = true,
+        own_window_argb_value = 50
 };
 
 conky.text = [[
+#own_window_class = 'override',
+#own_window_type = 'normal'
 # Possible variables to be used:
 #
 #      Variable         Arguments                  Description                
