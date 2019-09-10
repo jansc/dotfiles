@@ -46,10 +46,46 @@
 ;(setq org-agenda-skip-deadline-if-done t)
 ;(setq org-agenda-skip-scheduled-if-done nil)
 
-; Refiling
-;(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
-;(setq org-refile-use-outline-path t)
-;(setq org-outline-path-complete-in-steps t)
+;; == Tags ==
+;; Allow setting single tags without the menu
+(setq org-fast-tag-selection-single-key 'expert)
+
+;; Include the todo keywords
+(setq org-fast-tag-selection-include-todo t)
+
+;; == Custom State Keywords ==
+(setq org-use-fast-todo-selection t)
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+	(sequence "WAITING(w@/!)" "INACTIVE(i)" "|" "CANCELLED(c@/!)" "MEETING")))
+;; Custom colors for the keywords
+(setq org-todo-keyword-faces
+      '(("TODO" :foreground "red" :weight bold)
+	("NEXT" :foreground "blue" :weight bold)
+	("DONE" :foreground "forest green" :weight bold)
+	("WAITING" :foreground "orange" :weight bold)
+	("INACTIVE" :foreground "magenta" :weight bold)
+	("CANCELLED" :foreground "forest green" :weight bold)
+	("MEETING" :foreground "forest green" :weight bold)))
+;; Auto-update tags whenever the state is changed
+(setq org-todo-state-tags-triggers
+      '(("CANCELLED" ("CANCELLED" . t))
+	("WAITING" ("WAITING" . t))
+	("INACTIVE" ("WAITING") ("INACTIVE" . t))
+	("DONE" ("WAITING") ("INACTIVE"))
+	("TODO" ("WAITING") ("CANCELLED") ("INACTIVE"))
+	("NEXT" ("WAITING") ("CANCELLED") ("INACTIVE"))
+	("DONE" ("WAITING") ("CANCELLED") ("INACTIVE"))))
+
+;; == Refiling ==
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+;;  Be sure to use the full path for refile setup
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps nil)
+
+;; Allow refile to create parent tasks with confirmation
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;(setq org-clock-persist t)
 ;(setq org-clock-in-resume t)
@@ -62,7 +98,8 @@
 (setq org-agenda-files (list (concat org-directory "/todo.org")
                              (concat org-directory "/gtd.org")
                              (concat org-directory "/gtd-private.org")
-                             (concat org-directory "/google.org")))
+                             (concat org-directory "/google.org")
+                             (concat org-directory "/")))
 
 ;;(setq org-enforce-todo-dependencies t)
 
@@ -75,6 +112,10 @@
         ("p" "Todo Private" entry
          (file+headline (lambda () (concat org-directory "/gtd-private.org")) "Tasks")
          "* TODO %?\n  %i\n  %a")
+        ("m" "Meeting" entry (file org-default-notes-file)
+         "* MEETING with %? :MEETING:\n" :clock-in t :clock-resume t)
+        ("i" "Idea" entry (file org-default-notes-file)
+         "* %? :IDEA: \n%u" :clock-in t :clock-resume t)
         ("j" "Journal" entry
          (file+datetree (lambda () (concat org-directory "/journal.org")))
          "* %?\nEntered on %U\n  %i\n  %a")))
