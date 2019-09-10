@@ -58,4 +58,5 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Set up Node Version Manager
 source /usr/share/nvm/init-nvm.sh
 
-SBCL_HOME=/usr/lib/sbcl
+export SBCL_HOME=/usr/lib/sbcl
+export GOPHERUSCOLOR="022020202002020220" 
