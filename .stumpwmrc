@@ -1,0 +1,68 @@
+;; -*-lisp-*-
+;;
+(in-package :stumpwm)
+
+(require 'swank)
+(swank-loader:init)
+(defcommand swank () ()
+  (setf stumpwm:*top-level-error-action* :break)
+  (swank:create-server :style swank:*communication-style*
+                       :dont-close t
+                       :port 4004)
+  (echo-string (current-screen) "Starting swank."))
+(define-key *root-map* (kbd "C-s") "swank")
+
+(set-module-dir "/home/jans/stumpwm/contrib")
+
+;; clx-truetype seems to leak memory:
+;; https://github.com/stumpwm/stumpwm/issues/592
+;;(ql:quickload "clx-truetype")
+;;(xft:cache-fonts)
+;;(load-module "ttf-fonts")
+;;  (set-font (make-instance 'xft:font :family "Bitstream Vera Sans Mono" :subfamily "Roman" :size 15))
+
+(set-font "-*-lucidatypewriter-bold-r-*-*-*-140-*-*-*-*-*-1")
+(load-module "cpu")
+(load-module "net")
+(load-module "battery-portable")
+(load-module "wifi")
+
+(defvar battery-mode-string "")
+
+(when (probe-file "/sys/class/power_supply/BAT0")
+  (setf battery-mode-string " ^7*%B"
+        battery-portable:*refresh-time* 30))
+
+(setf *mouse-focus-policy* :click)
+(setf *mode-line-timeout* 3)
+(setf *window-format* "%m%n%s%c")
+(setf *screen-mode-line-format*
+      (list "[^B%n^b] %W^> %C %I ^6*%l %d" battery-mode-string))
+(setf *time-modeline-string* "%a %b %e %k:%M")
+(enable-mode-line (current-screen) (current-head) t)
+
+;; Web jump (works for Google and Imdb)
+(defmacro make-web-jump (name prefix)
+  `(defcommand ,(intern name) (search)
+     ((:rest ,(concatenate 'string name " search: ")))
+    (substitute #\+ #\Space search)
+    (run-shell-command (concatenate 'string ,prefix search))))
+
+(make-web-jump "google" "firefox http://www.google.fr/search?q=")
+(make-web-jump "imdb" "firefox http://www.imdb.com/find?q=")
+
+;; C-t M-s is a terrble binding, but you get the idea.
+(define-key *root-map* (kbd "M-s") "google")
+(define-key *root-map* (kbd "i") "imdb")
+
+(defcommand shutdown () () (run-shell-command "systemctl poweroff"))
+(defcommand reboot () () (run-shell-command "systemctl reboot"))
+
+(define-key *root-map* (kbd "c") "exec alacritty")
+(define-key *root-map* (kbd "C-c") "exec alacritty")
+(define-key *top-map* (kbd "M-TAB") "windowlist")
+
+;; Create some new virtual desktops (called groups in stumpwm):
+(run-commands "gnewbg Webdev" "gnewbg Comm")
+
+
