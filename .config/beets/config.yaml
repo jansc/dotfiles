@@ -1,0 +1,30 @@
+directory: ~/Music            # The default library root directory.
+library: ~/Music/library.db   # The default library database file to use.
+
+import:
+        copy: yes
+        move: no
+
+match:
+        preferred:
+                countries: ["US", "GB|UK", "DE", "NO"]
+                media: ["CD", "Digital Media|File"]
+
+# extensions for beets
+# to see if plugins are enabled run, $ beet version
+plugins: fetchart embedart lyrics fetchart
+
+fetchart:
+       auto: yes
+       enforce_ratio: yes
+       store_source: yes
+       sources:
+               - filesystem
+               - coverart: release
+               - itunes
+               - coverart: releasegroup
+               - '*'
+
+embedart:
+       auto: yes
+       remove_art_file: no 
