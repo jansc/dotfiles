@@ -54,6 +54,10 @@
   "true if linux, false if otherwise"
   (eq system-type 'gnu/linux))
 
+(defun is-bsd ()
+  "true if linux, false if otherwise"
+  (eq system-type 'berkeley-unix))
+
 ;; (if (is-darwin)
 ;;  (progn
 ;;    (require 'exec-path-from-shell)
@@ -79,6 +83,11 @@
 (if (is-linux)
     (progn
       (defconst FIREFOX_PRG "/usr/bin/firefox"
+        "points to the Mozilla Firefox location")))
+
+(if (is-bsd)
+    (progn
+      (defconst FIREFOX_PRG "/usr/local/bin/firefox"
         "points to the Mozilla Firefox location")))
 
 ; set the location of firefox for the browse-url-package
