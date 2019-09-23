@@ -35,7 +35,8 @@ export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
 export CLICOLOR=1
-export EDITOR=vim
+export EDITOR="emacsclient --no-wait"
+alias e='emacsclient --no-wait'
 
 # Git into the prompt:
 # http://asemanfar.com/Current-Git-Branch-in-Bash-Prompt
