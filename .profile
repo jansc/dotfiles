@@ -12,6 +12,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH:$HOME
 export PATH=/usr/local/ravnutilities/bin:$PATH
 export PATH=/usr/local/opt/qt5/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # GIT bash completion
 if [ -f /usr/share/git-core/git-completion.bash ] ; then
