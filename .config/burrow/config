@@ -1,0 +1,21 @@
+config_dir_gopher="$HOME/gopher/"      # local path to gopher site
+config_gopher_server="jan.bio"         # server of gopher host
+config_gopher_port="70"                # port of gopher host
+config_gopher_root="/"                 # path on gopher host to gopher site
+
+config_dir_phlog="phlog"               # relative path to phlog
+config_phlog_gophermap=true            # phlogs use gophermap format by default
+config_phlog_usedate=true              # use a date-stamp on phlog posts
+
+config_git_commit=false                # automatically commit changes if git repo
+config_git_push=false                  # automatically push changes if git repo
+
+config_autoindent=true                 # automatically reformat gophermaps with leading "i"
+                                       # types and parse links at the end of file
+config_gophernicus=true	               # Server uses gophernicus
+
+config_file_rss="rss.xml"              # filename of RSS feed
+config_gopher_name="My Gopher Hole"    # used in RSS feed output
+config_gopher_desc="Description"       # used in RSS feed output
+config_rss_num_entries="10"            # number of entries to inclued in RSS feed
+config_phlog_autorss=false             # automatically generate RSS feed
