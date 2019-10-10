@@ -47,5 +47,13 @@
         <genre>Podcast</genre>
       </metadata>
     </subscription>
+    <subscription>
+      <title>BSD Now</title>
+      <url>https://www.bsdnow.tv/rss</url>
+      <max_number>3</max_number>
+      <metadata>
+        <genre>Podcast</genre>
+      </metadata>
+    </subscription>
   </subscriptions>
 </poca>
