@@ -31,7 +31,7 @@ if [[ $platform == 'osx' ]]; then
   PERL5LIB="/Users/jans/perl5/lib/perl5/"; export PERL5LIB;
 fi
 
-export DISPLAY=:0.0
+#export DISPLAY=:0.0
 export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
@@ -58,7 +58,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Set up Node Version Manager
-source /usr/share/nvm/init-nvm.sh
+#source /usr/share/nvm/init-nvm.sh
 
 export SBCL_HOME=/usr/lib/sbcl
 export GOPHERUSCOLOR="022020202002020220" 
