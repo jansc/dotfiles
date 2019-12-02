@@ -4,7 +4,8 @@ bind index,pager g noop
 bind index \Cf noop
 set sleep_time = 0
 # Sort by date in reverse order. This makes new mail appear on the top instead of bottom
-set sort = 'reverse-date'
+set sort = reverse-threads
+set sort_aux = date-received
 # Use emacs to write new mail
 set editor ="emacsclient -a \"\" -t"
 #set copy = no
