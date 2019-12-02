@@ -180,15 +180,8 @@
 (require 'emacs-ui)             ; theme, fonts, modeline and eye candy
 (require 'emacs-which-key)      ; short cuts
 
-;; TODO: Move to separate file
-;(add-to-list 'load-path "~/.silver-brain/emacs/")
-;(require 'use-package)
-;(use-package silver-brain
-;  :init
-;  ;; The port of back-end server. Does NOT affect server side.
-;  (setq silver-brain-server-port 5000)
-;  :bind
-;  ("C-c b" . silver-brain))
+;; Mutt support
+(setq auto-mode-list (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
 
 ;;=====================================================================
 ;; some reference stuff

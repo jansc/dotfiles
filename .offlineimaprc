@@ -28,8 +28,7 @@ accounts = Fastmail
 #
 # You can override this with a command-line option -u.
 
-#ui = basic
-ui = ttyui
+ui = quiet
 
 # If you try to synchronize messages to a folder which the IMAP server
 # considers read-only, OfflineIMAP will generate a warning.  If you want
@@ -41,6 +40,8 @@ ui = ttyui
 # setting which prevents a repository from being modified at all.
 
 #ignore-readonly = no
+
+maxsyncaccounts = 1
 
 ########## Advanced settings
 
@@ -95,7 +96,12 @@ remoterepository = RemoteFastmail
 # frequently to do that (in minutes) here.  You can also specify
 # fractional minutes (ie, 3.25).
 
-# autorefresh = 3
+autorefresh = 0.5
+# Quick-syncs do not update if the only changes were to IMAP flags.
+# autorefresh=0.5 together with quick=10 yields
+# 10 quick refreshes between each full refresh, with 0.5 minutes between every 
+# refresh, regardless of type.
+quick = 10
 
 # When you are starting to sync an already existing account you can tell
 # offlineimap to sync messages from only the last x days.  When you do
@@ -112,7 +118,7 @@ remoterepository = RemoteFastmail
 # that day until today.  e.g. maxage = 3 to sync only the last 3 days
 # mail
 #
-maxage = 3
+maxage = 30
 
 # Specifies if we want to sync GMail lables with the local repository.
 # Effective only for GMail IMAP repositories.
@@ -187,7 +193,8 @@ ssl = yes
 # Fingerprints must be in hexadecimal form without leading '0x':
 # 40 hex digits like bbfe29cf97acb204591edbafe0aa8c8f914287c9.
 
-cert_fingerprint = 958b1601563aef92607a41eb5bad22e3cace8431
+cert_fingerprint = dcd2284bc7dd5cf6ee4e3b46384a4d3052c020355d24e6a34c9cd3e5cd3eb48f1f895e07c641437bcfef1cabc69a0555f2fba64d13051c552532d0652b43f6da
+
 
 # Specify the remote user name.
 remoteuser = mecinus@fastmail.fm
@@ -195,3 +202,19 @@ remoteuser = mecinus@fastmail.fm
 ########## Passwords
 
 remotepassfile = ~/.fastmail.txt
+
+# Instead of closing the connection once a sync is complete, offlineimap will
+# send empty data to the server to hold the connection open. A value of 60
+# attempts to hold the connection for a minute between syncs (both quick and
+# autorefresh).This setting has no effect if autorefresh and holdconnectionopen
+# are not both set.
+
+keepalive = 60
+
+# OfflineIMAP normally closes IMAP server connections between refreshes if
+# the global option autorefresh is specified.  If you wish it to keep the
+# connection open, set this to true. This setting has no effect if autorefresh
+# is not set.
+
+holdconnectionopen = yes
+

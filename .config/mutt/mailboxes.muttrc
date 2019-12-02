@@ -1,0 +1,4 @@
+macro index,pager <F1> '<sync-mailbox><enter-command>source ~/.config/mutt/fastmail.muttrc<enter><change-folder>!<enter>;<check-stats>'
+#macro index,pager <F2> '<sync-mailbox><enter-command>source ~/.config/mutt/account2.muttrc<enter><change-folder>!<enter>;<check-stats>'
+
+source ~/.config/mutt/fastmail.muttrc

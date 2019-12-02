@@ -1,0 +1,36 @@
+set realname = "Jan Schreiber"
+set from = "jan@mecinus.com"
+set sendmail = "/usr/bin/msmtp -a mecinus@fastmail.fm"
+set folder = "~/imap/fastmail/"
+set spoolfile = "+INBOX"
+set ssl_starttls = no
+set ssl_force_tls = yes
+
+alias me "Jan Schreier" "jan@mecinus.com"
+
+set mbox_type = Maildir
+
+#unmailboxes *
+mailboxes =INBOX =INBOX.GMAIL =INBOX.GMAIL-ABUSE =INBOX.Archive ="INBOX.Junk Mail" =INBOX.Drafts =INBOX.Notes ="INBOX.Sent Items" =INBOX.Trash
+set header_cache = ~/.cache/mutt
+set record = "+INDEX.Sent\ Items"
+set postponed = "+INDEX.Drafts"
+
+alternates "(jan@mecinus\.com)|(mail@jschreiber\.com)"
+set use_from
+set reverse_name
+
+# default profile
+set from="jan@mecinus.com"
+set use_from = yes
+set status_format="-%r-jan@mecinus.com: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+# Switch between from-addresses
+macro index \e1 ":set from=jan@mecinus.com\n:set status_format=\"-%r-jan@mecinus.com: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---\"\n" "Switch to jan@mecinus.com"
+macro index \e2 ":set from=mail@jschreiber.com\n:set status_format=\"-%r-mail@jschreiber.com: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---\"\n" "Switch to mail@jschreiber.com"
+
+# A moves messages to archive
+macro index A ":set confirmappend=no delete=yes\n<save-message>=INBOX.Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+
+
+
