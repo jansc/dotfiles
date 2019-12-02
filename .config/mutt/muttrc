@@ -30,7 +30,8 @@ macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 set mailcap_path = ~/.config/mutt/mailcap
 # set mailcap_path = ~/.mailcap
 set date_format="%d/%m/%y %I:%M"
-set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
+#set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
+set index_format="%3C %Z %?X?A& ? %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 set markers = no
 set mark_old = no
 set mime_forward = yes
@@ -60,7 +61,6 @@ bind index,browser d half-down
 bind index,browser u half-up
 bind index D delete-message
 bind index U undelete-message
-bind index,browser F search
 bind index,pager R group-reply
 macro index,pager S <sync-mailbox>
 bind editor        <Tab> complete-query
