@@ -13,8 +13,8 @@ set mbox_type = Maildir
 #unmailboxes *
 mailboxes =INBOX =INBOX.GMAIL =INBOX.GMAIL-ABUSE =INBOX.Archive ="INBOX.Junk Mail" =INBOX.Drafts =INBOX.Notes ="INBOX.Sent Items" =INBOX.Trash
 set header_cache = ~/.cache/mutt
-set record = "+INDEX.Sent\ Items"
-set postponed = "+INDEX.Drafts"
+set record = "+INBOX.Sent\ Items"
+set postponed = "+INBOX.Drafts"
 
 alternates "(jan@mecinus\.com)|(mail@jschreiber\.com)"
 set use_from
