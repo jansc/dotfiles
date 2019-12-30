@@ -50,6 +50,10 @@
     <subscription>
       <title>BSD Now</title>
       <url>https://www.bsdnow.tv/rss</url>
+      <rename divider="_" space="_">
+	      <date/>
+	      <title/>
+      </rename>
       <max_number>3</max_number>
       <metadata>
         <genre>Podcast</genre>
