@@ -14,9 +14,9 @@ set mail_check = "10"
 
 set sidebar_visible
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-bind index,pager \CP sidebar-prev # Ctrl-Shift-P - Previous Mailbox
-bind index,pager \CN sidebar-next # Ctrl-Shift-N - Next Mailbox
-bind index,pager \CO sidebar-open # Ctrl-Shift-O - Open Mailbox
+bind index,pager \eP sidebar-prev # Ctrl-Shift-P - Previous Mailbox
+bind index,pager \eN sidebar-next # Ctrl-Shift-N - Next Mailbox
+bind index,pager \eO sidebar-open # Ctrl-Shift-O - Open Mailbox
 set mail_check_stats
 
 set send_charset="us-ascii:utf-8"

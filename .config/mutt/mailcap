@@ -1,1 +1,6 @@
 text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+# application/pdf; ~/.mutt/scripts/mutt_bgrun evince %s; copiousoutput
+# text/calendar; ~/.mutt/scripts/vcalendar-filter; copiousoutput
+# text/calendar; mutt-ics; copiousoutput
+# application/ics; mutt-ics; copiousoutput 
+application/*; xdg-open %s
