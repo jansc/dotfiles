@@ -14,6 +14,8 @@ export PATH=/usr/local/opt/qt5/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
+export TERMINAL=sakura
+
 # GIT bash completion
 if [ -f /usr/share/git-core/git-completion.bash ] ; then
   . /usr/share/git-core/git-completion.bash
@@ -60,5 +62,5 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Set up Node Version Manager
 #source /usr/share/nvm/init-nvm.sh
 
-export SBCL_HOME=/usr/lib/sbcl
+export SBCL_HOME=/usr/local/lib/sbcl
 export GOPHERUSCOLOR="022020202002020220" 
