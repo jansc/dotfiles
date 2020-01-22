@@ -33,7 +33,10 @@ if [[ $platform == 'osx' ]]; then
   PERL5LIB="/Users/jans/perl5/lib/perl5/"; export PERL5LIB;
 fi
 
-#export DISPLAY=:0.0
+if [[ $platform == 'linux' ]]; then
+  export DISPLAY=:0.0
+fi
+
 export IRCNICK=jansc
 export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
@@ -55,6 +58,7 @@ alias binds="bind -P | grep 'can be'"
 alias prettyjson='python -m json.tool'  
 alias ff='find . -name '
 alias ws='python -m http.server 9000'
+alias mutt='neomutt'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
@@ -64,3 +68,4 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 export SBCL_HOME=/usr/local/lib/sbcl
 export GOPHERUSCOLOR="022020202002020220" 
+
