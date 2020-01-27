@@ -2,6 +2,7 @@
 (require 'epa-file)
 (epa-file-enable)
 (require 'org-install)
+(require 'ox-confluence) ; From org-contrib
 
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
