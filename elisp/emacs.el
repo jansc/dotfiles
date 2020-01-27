@@ -125,7 +125,7 @@
 ;;=====================================================================
 ;; Automatically install packages defined in 'package-list
 ;; Temporarily removed mu4e-maildirs-extension and magit
-(setq package-list '(ace-jump-mode ac-php erc evil ledger-mode org-present php-mode php-extras tramp twittering-mode ido rust-mode tide company elfeed one-themes slime slime-company paredit))
+(setq package-list '(use-package ace-jump-mode ac-php erc evil ledger-mode org-present php-mode php-extras tramp twittering-mode ido rust-mode tide company elfeed one-themes slime slime-company paredit treemacs treemacs-evil treemacs-icons-dired))
 ;; TODO: After install on fedora 26, the following packages where missing:
 ;; mu4e-maildirs-extension and which-key
 
@@ -170,6 +170,7 @@
 (require 'emacs-magit)
 (require 'emacs-tide)           ; typescript mode
 (require 'emacs-tramp)          ; remote file access
+(require 'emacs-treemacs)       ; sidebar ala nerdtree
 (require 'emacs-org)            ; org mode settings
 (require 'emacs-org-reveal)     ; mode for creating presentations within org-mode
 ;;(require 'emacs-csv)          ; comma-separated-value editing package
