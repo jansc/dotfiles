@@ -69,3 +69,16 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export SBCL_HOME=/usr/local/lib/sbcl
 export GOPHERUSCOLOR="022020202002020220" 
 
+# Remember bash history forever
+# http://jesrui.sdf-eu.org/remember-all-your-bash-history-forever.html
+HISTTIMEFORMAT='%F %T '
+HISTFILESIZE=-1
+HISTSIZE=-1
+HISTCONTROL=ignoredups
+HISTIGNORE=?:??
+# append to history, don't overwrite it
+shopt -s histappend                 
+# attempt to save all lines of a multiple-line command in the same history entry
+shopt -s cmdhist
+# save multi-line commands to the history with embedded newlines
+shopt -s lithist
