@@ -176,6 +176,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screen Shots
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec gnome-screenshot -i
 
 # Open applications on specific workspaces
 assign [class="Thunderbird"] $ws2
@@ -195,8 +198,8 @@ for_window [class="Pavucontrol"] floating enable
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-bindsym control+mod1+l exec --no-startup-id i3lock -c 333333 -e -f & sleep 5 && xset dpms force off
-exec --no-startup-id xautolock -detectsleep -time 10 -locker 'i3lock -c 333333 -e -f -n'
+bindsym control+mod1+l exec --no-startup-id i3lock --image=/home/jans/.config/i3/wallpaper.png -e -f & sleep 5 && xset dpms force off
+exec --no-startup-id xautolock -detectsleep -time 10 -locker 'i3lock --image=/home/jans/.config/i3/wallpaper.png -e -f -n'
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
