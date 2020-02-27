@@ -35,6 +35,7 @@ fi
 
 if [[ $platform == 'linux' ]]; then
   export DISPLAY=:0.0
+  export QT_SCALE_FACTOR=2
 fi
 
 export IRCNICK=jansc
@@ -42,6 +43,7 @@ export IRCNAME="Jan Schreiber"
 export PGHOST=127.0.0.1
 export CLICOLOR=1
 export EDITOR="emacsclient --no-wait"
+export ALTERNATE_EDITOR="vim"
 alias e='emacsclient --no-wait'
 
 # Git into the prompt:
@@ -59,6 +61,9 @@ alias prettyjson='python -m json.tool'
 alias ff='find . -name '
 alias ws='python -m http.server 9000'
 alias mutt='neomutt'
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias more=less
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
@@ -82,3 +87,14 @@ shopt -s histappend
 shopt -s cmdhist
 # save multi-line commands to the history with embedded newlines
 shopt -s lithist
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+###-tns-completion-start-###
+if [ -f /home/jans/.tnsrc ]; then 
+    source /home/jans/.tnsrc 
+fi
+###-tns-completion-end-###
+

@@ -3,6 +3,8 @@
 (epa-file-enable)
 (require 'org-install)
 (require 'ox-confluence) ; From org-contrib
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
 
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
@@ -25,7 +27,7 @@
 (global-set-key "\C-cb" 'org-iswitchb) ; FIXME conflicts with org-brain
 
 ;; Set to the location of your Org files on your local system
-(setq org-directory "~/Dropbox/org-files")
+(setq org-directory "~/Sync/org-files")
 
 ;; mobileorg is no longer in use as of july 2019
 ;; Set to the name of the file where new notes will be stored
@@ -114,11 +116,11 @@
          (file+headline (lambda () (concat org-directory "/gtd-private.org")) "Tasks")
          "* TODO %?\n  %i\n  %a")
         ("m" "Meeting" entry (file org-default-notes-file)
-         "* MEETING with %? :MEETING:\n" :clock-in t :clock-resume t)
+         "* MEETING with %? :MEETING:\n** Agenda:\n*** \n\n** Summary:\n*** \n" :clock-in t :clock-resume t)
         ("i" "Idea" entry (file org-default-notes-file)
          "* %? :IDEA: \n%u" :clock-in t :clock-resume t)
         ("j" "Journal" entry
-         (file+datetree (lambda () (concat org-directory "/journal.org")))
+         (file+datetree (lambda () (concat org-directory "/privat/journal.org")))
          "* %?\nEntered on %U\n  %i\n  %a")))
 
 ;; Configure org-present-mode
@@ -146,4 +148,18 @@
         ("gmap"      . "http://maps.google.com/maps?q=%s")
         ("omap"      . "http://nominatim.openstreetmap.org/search?q=%s&polygon=1")))
 
+;;; org-caldav
+(require 'auth-source)
+(setq auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+(setq org-caldav-calendars
+  '(; (:calendar-id "work@whatever" :files ("~/org/work.org")
+     ;             :inbox "~/org/fromwork.org")
+    (:calendar-id "b0076281-0332-4ecf-aef1-0ced83c27fe7y" 
+                  :inbox "~/Sync/org-files/calendar-privat.org"
+     :files ("~/Sync/org-files/calendar.org"))))
+(setq org-caldav-url "https://caldav.fastmail.com/dav/calendars/user/mecinus@fastmail.fm")
+                     ;https://caldav.fastmail.com/dav/calendars/user/mecinus@fastmail.fm/69653928-2c6d-40e4-b3ad-9ebae4d17f21/
+;(setq org-caldav-calendar-id "69653928-2c6d-40e4-b3ad-9ebae4d17f21")
+;(setq org-caldav-calendar-id "b0076281-0332-4ecf-aef1-0ced83c27fe7y")
+(setq org-icalendar-timezone "Europe/Berlin")
 (provide 'emacs-org)
