@@ -6,7 +6,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 9
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -176,6 +176,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screen Shots
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec gnome-screenshot -i
 
 # Open applications on specific workspaces
 assign [class="Thunderbird"] $ws2
@@ -190,12 +193,13 @@ for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [class="Pavucontrol"] floating enable
 
-exec --no-startup-id redshift
-#exec --no-startup-id xfce4-power-manager
+# started in .xinitrc
+#exec --no-startup-id redshift
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+bindsym control+mod1+l exec --no-startup-id i3lock --image=/home/jans/.config/i3/wallpaper.png -e -f & sleep 5 && xset dpms force off
+exec --no-startup-id xautolock -detectsleep -time 10 -locker 'i3lock --image=/home/jans/.config/i3/wallpaper.png -e -f -n'
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -206,6 +210,6 @@ exec --no-startup-id nm-applet
 # finds out, if available)
 bar {
         position top
-        i3bar_command $HOME/.config/polybar/launch.sh
-        #status_command i3status
+        #i3bar_command $HOME/.config/polybar/launch.sh
+        status_command i3status
 }
