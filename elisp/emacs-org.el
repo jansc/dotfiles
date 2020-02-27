@@ -20,6 +20,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
+; Enable markdown export
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 ;(setq org-agenda-files (list "~/org/gtd" ))
 ;(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (global-set-key "\C-cl" 'org-store-link)
