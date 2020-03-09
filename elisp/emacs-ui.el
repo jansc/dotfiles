@@ -36,6 +36,7 @@
 ;;======================================================================
 ;; Color Themes
 ;;(add-to-list 'custom-theme-load-path "~/elisp/themes/emacs-color-theme-solarized")
-(load-theme 'one-dark t)
+(load-theme 'solarized-dark t)
+;(load-theme 'one-dark t)
 
 (provide 'emacs-ui)
