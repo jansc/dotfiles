@@ -30,7 +30,7 @@
       (run 'poca-subscribe tags' for a list of valid values)
     * filters: Contains one or more filters (all optional)
     * rename: Contains template for renaming audio files (optional) -->
-	  <!-- This is an example for illustration purposes. Feel free to delete. -->
+    <!-- This is an example for illustration purposes. Feel free to delete. -->
     <subscription>
       <title>IRL - Online life is real life</title>
       <url>https://feeds.mozilla-podcasts.org/irl</url>
@@ -41,7 +41,7 @@
     </subscription>
     <subscription>
       <title>Reply All</title>
-      <url>http://feeds.panoply.fm/GLT6865004529</url>
+      <url>http://feeds.megaphone.fm/GLT6865004529</url>
       <max_number>3</max_number>
       <metadata>
         <genre>Podcast</genre>
@@ -51,8 +51,8 @@
       <title>BSD Now</title>
       <url>https://www.bsdnow.tv/rss</url>
       <rename divider="_" space="_">
-	      <date/>
-	      <title/>
+        <date/>
+        <title/>
       </rename>
       <max_number>3</max_number>
       <metadata>
