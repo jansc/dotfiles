@@ -34,7 +34,8 @@
     b = branch
     a = add
     nb = checkout -b
-    st = status
+    st = status -sb
+    me = merge --no-commit --no-ff
  
 # Commitencoding
 [i18n]
