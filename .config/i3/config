@@ -192,6 +192,8 @@ for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [class="Pavucontrol"] floating enable
+for_window [title="xv"] floating enable
+for_window [title="SyncTERM"] floating enable
 
 # started in .xinitrc
 #exec --no-startup-id redshift
