@@ -182,7 +182,7 @@ bindsym Control+Print exec gnome-screenshot -i
 
 # Open applications on specific workspaces
 assign [class="Thunderbird"] $ws2
-assign [class="Chrome"] $ws3
+assign [class="Chrome"] $ws4
 
 # Open specific applications in floating mode
 for_window [title="Volume Control"] floating enable border pixel 1
@@ -191,9 +191,11 @@ for_window [class="GParted"] floating enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [class="Pavucontrol"] floating enable
-for_window [title="xv"] floating enable
-for_window [title="SyncTERM"] floating enable
+for_window [class="Pavucontrol"] floating enable border normal
+for_window [title="xv"] floating enable border normal
+for_window [title="SyncTERM"] floating enable border normal
+
+bindsym $mod+x [urgent=latest] focus
 
 # started in .xinitrc
 #exec --no-startup-id redshift
@@ -207,6 +209,10 @@ exec --no-startup-id xautolock -detectsleep -time 10 -locker 'i3lock --image=/ho
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id i3-msg 'workspace 2:Emacs; exec emacs'
+exec --no-startup-id i3-msg 'workspace 3:Web; exec firefox'
+exec --no-startup-id i3-msg 'workspace 5:Sync; exec syncthing-gtk'
+exec --no-startup-id i3-msg 'workspace 1:Term; exec xterm'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
