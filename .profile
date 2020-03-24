@@ -14,7 +14,11 @@ export PATH=/usr/local/opt/qt5/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-export TERMINAL=sakura
+if [[ $platform == 'Linux' ]]; then
+   export TERMINAL=sakura
+elif [[ $platform == 'FreeBSD' ]]; then
+   export TERMINAL=xterm
+fi
 
 # GIT bash completion
 if [ -f /usr/share/git-core/git-completion.bash ] ; then
