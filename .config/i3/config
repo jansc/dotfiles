@@ -208,6 +208,8 @@ exec --no-startup-id xautolock -detectsleep -time 10 -locker 'i3lock --image=/ho
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+exec --no-startup-id clipit
 
 exec --no-startup-id i3-msg 'workspace 2:Emacs; exec emacs'
 exec --no-startup-id i3-msg 'workspace 3:Web; exec firefox'
