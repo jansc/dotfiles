@@ -176,10 +176,12 @@
 ;;(require 'emacs-csv)          ; comma-separated-value editing package
 ;;(require 'emacs-sql)          ; database interaction
 (require 'emacs-paredit)        ; 
-(require 'emacs-mu4e)           ; email reader
+;(require 'emacs-mu4e)           ; email reader
 (require 'emacs-rust)           ; rust mode
 (require 'emacs-ui)             ; theme, fonts, modeline and eye candy
 (require 'emacs-which-key)      ; short cuts
+
+(require 'emacs-dired)          ; Dired mode
 
 ;; Mutt support
 (setq auto-mode-list (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
@@ -197,9 +199,9 @@
 ;;======================================================================
 ;; Local variables
 
-(if (and (fboundp 'server-running-p) 
-         (not (server-running-p)))
-   (server-start))
+;(if (and (fboundp 'server-running-p) 
+;         (not (server-running-p)))
+   (server-start)
 
 ;Local Variables:
 ;indent-tabs-mode: nil
