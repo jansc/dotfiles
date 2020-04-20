@@ -35,9 +35,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun -show combi -modi combi -show-icons
+# start rofi (a dmenu launcher replacement)
+bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun#ssh -show combi -modi combi -show-icons
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym --whole-window $mod+Shift+m exec --no-startup-id "xdotool getactivewindow windowsize $(xdpyinfo | grep dimensions: | sed 's/^.*: *\([0-9]\)/\1/;s/ pix.*//;s/x/ /') windowmove 0 0"
 
