@@ -1,5 +1,8 @@
 [core]
     quotepath = false
+[merge]
+    renamelimit = 8000
+
 [user]
     name = Jan Schreiber
     email = jans@ravn.no
@@ -44,3 +47,4 @@
 # Push only the current branch on git push
 [push]
     default = tracking
+
