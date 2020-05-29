@@ -14,9 +14,10 @@ export PATH=/usr/local/opt/qt5/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-if [[ $platform == 'Linux' ]]; then
+export TERMINAL=sakura
+if [[ $platform == 'linux' ]]; then
    export TERMINAL=sakura
-elif [[ $platform == 'FreeBSD' ]]; then
+elif [[ $platform == 'freebsd' ]]; then
    export TERMINAL=xterm
 fi
 
@@ -73,7 +74,9 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Set up Node Version Manager
-#source /usr/share/nvm/init-nvm.sh
+if [[ $platform == 'linux' ]]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
 
 export SBCL_HOME=/usr/local/lib/sbcl
 export GOPHERUSCOLOR="022020202002020220" 

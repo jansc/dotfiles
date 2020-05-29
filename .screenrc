@@ -1,4 +1,6 @@
+defutf8 on
 shell -$SHELL
+term screen-256color
 
 # Turn off the welcome message
 startup_message off
