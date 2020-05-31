@@ -6,6 +6,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
+Plug 'tpope/vim-speeddating'              " Ctrl-a-magic (needed by
+                                          " vim-orgmode
+Plug 'jceb/vim-orgmode'                   " org-mode support
 
 call plug#end()
 
@@ -44,7 +47,7 @@ set autoindent                  " Indent at the same level of the previous line
 set backspace=indent,eol,start  " Backspace for dummies
 set background=dark             " use dark theme
 set backup                      " Backups are nice ...
-set backupdir=./.backup,.,/tmp
+set backupdir=./.backup,/tmp//
 set clipboard^=unnamed,unnamedplus
 "set colorcolumn=80
 "set cursorline                  " Highlight current line
@@ -77,7 +80,6 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 set splitright                  " Puts new vsplit windows to the right of the current
 set tabpagemax=15               " Only show 15 tabs
 set tags=./tags,tags;$HOME
-set virtualedit=onemore         " Allow for cursor beyond last character
 set winminheight=0              " Windows can be 0 line high
 
 colorscheme monokai
