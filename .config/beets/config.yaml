@@ -28,3 +28,6 @@ fetchart:
 embedart:
        auto: yes
        remove_art_file: no 
+
+lyrics:
+       sources: google lyricwiki musixmatch
