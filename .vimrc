@@ -44,6 +44,7 @@ set autoindent                  " Indent at the same level of the previous line
 set backspace=indent,eol,start  " Backspace for dummies
 set background=dark             " use dark theme
 set backup                      " Backups are nice ...
+set backupdir=./.backup,.,/tmp
 set clipboard^=unnamed,unnamedplus
 "set colorcolumn=80
 "set cursorline                  " Highlight current line
