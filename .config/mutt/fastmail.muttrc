@@ -11,7 +11,7 @@ alias me "Jan Schreier" "jan@mecinus.com"
 set mbox_type = Maildir
 
 #unmailboxes *
-mailboxes =INBOX =INBOX.GMAIL =INBOX.GMAIL-ABUSE =INBOX.Archive ="INBOX.Junk Mail" =INBOX.Drafts =INBOX.Notes ="INBOX.Sent Items" =INBOX.Trash
+mailboxes =INBOX =INBOX.GMAIL =INBOX.GMAIL-ABUSE =INBOX.Archive ="INBOX.Junk Mail" =INBOX.Drafts =INBOX.Notes ="INBOX.Sent Items" =INBOX.Trash ="INBOX.Gemini List"
 set header_cache = ~/.cache/mutt
 set record = "+INBOX.Sent\ Items"
 set postponed = "+INBOX.Drafts"
