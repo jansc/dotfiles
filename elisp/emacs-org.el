@@ -30,6 +30,72 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb) ; FIXME conflicts with org-brain
 
+
+;; Adapted from http://doc.norang.ca/org-mode.html
+;; Custom Key Bindings
+(global-set-key (kbd "<f12>") 'org-agenda)
+;(global-set-key (kbd "<f5>") 'js/org-todo)
+;(global-set-key (kbd "<S-f5>") 'js/widen)
+;(global-set-key (kbd "<f7>") 'js/set-truncate-lines)
+(global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
+;(global-set-key (kbd "<f9> <f9>") 'js/show-org-agenda)
+(global-set-key (kbd "<f9> b") 'bbdb)
+(global-set-key (kbd "<f9> c") 'calendar)
+;(global-set-key (kbd "<f9> f") 'boxquote-insert-file)
+(global-set-key (kbd "<f9> m") 'mu4e)
+(global-set-key (kbd "<f9> h") 'js/hide-other)
+;(global-set-key (kbd "<f9> n") 'js/toggle-next-task-display)
+
+;(global-set-key (kbd "<f9> I") 'js/punch-in)
+;(global-set-key (kbd "<f9> O") 'js/punch-out)
+
+(global-set-key (kbd "<f9> o") 'js/make-org-scratch)
+
+;(global-set-key (kbd "<f9> r") 'boxquote-region)
+(global-set-key (kbd "<f9> s") 'js/switch-to-scratch)
+
+;(global-set-key (kbd "<f9> t") 'js/insert-inactive-timestamp)
+;(global-set-key (kbd "<f9> T") 'js/toggle-insert-inactive-timestamp)
+
+(global-set-key (kbd "<f9> v") 'visible-mode)
+(global-set-key (kbd "<f9> l") 'org-toggle-link-display)
+;(global-set-key (kbd "<f9> SPC") 'js/clock-in-last-task)
+(global-set-key (kbd "C-<f9>") 'previous-buffer)
+(global-set-key (kbd "M-<f9>") 'org-toggle-inline-images)
+(global-set-key (kbd "C-x n r") 'narrow-to-region)
+(global-set-key (kbd "C-<f10>") 'next-buffer)
+(global-set-key (kbd "<f11>") 'org-clock-goto)
+(global-set-key (kbd "C-<f11>") 'org-clock-in)
+;(global-set-key (kbd "C-s-<f12>") 'js/save-then-publish)
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(defun js/hide-other ()
+  (interactive)
+  (save-excursion
+    (org-back-to-heading 'invisible-ok)
+    (hide-other)
+    (org-cycle)
+    (org-cycle)
+    (org-cycle)))
+
+(defun js/set-truncate-lines ()
+  "Toggle value of truncate-lines and refresh window display."
+  (interactive)
+  (setq truncate-lines (not truncate-lines))
+  ;; now refresh window display (an idiom from simple.el):
+  (save-excursion
+    (set-window-start (selected-window)
+                      (window-start (selected-window)))))
+
+(defun js/make-org-scratch ()
+  (interactive)
+  (find-file "/tmp/publish/scratch.org")
+  (gnus-make-directory "/tmp/publish"))
+
+(defun js/switch-to-scratch ()
+  (interactive)
+  (switch-to-buffer "*scratch*"))
+
 ;; Set to the location of your Org files on your local system
 (setq org-directory "~/Sync/org-files")
 
@@ -41,6 +107,7 @@
 ;(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-refile-file (concat org-directory "/refile.org"))
 (setq org-hide-leading-stars t)
 ;(setq org-odd-levels-only t)
 
@@ -106,7 +173,7 @@
                              (concat org-directory "/gtd.org")
                              (concat org-directory "/gtd-private.org")
                              (concat org-directory "/google.org")
-                             (concat org-directory "/")))
+                             (concat org-directory "/refile.org")))
 
 ;;(setq org-enforce-todo-dependencies t)
 
@@ -116,18 +183,20 @@
       '(("t" "Todo Work" entry
          (file+headline (lambda () (concat org-directory "/gtd.org")) "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("p" "Todo Private" entry
+        ("w" "Todo Private" entry
          (file+headline (lambda () (concat org-directory "/gtd-private.org")) "Tasks")
          "* TODO %?\n  %i\n  %a")
         ("m" "Meeting" entry (file org-default-notes-file)
          "* MEETING with %? :MEETING:\n** Agenda:\n*** \n\n** Summary:\n*** \n" :clock-in t :clock-resume t)
-        ("i" "Idea" entry (file org-default-notes-file)
+        ("i" "Idea" entry (file org-default-refile-file)
          "* %? :IDEA: \n%u" :clock-in t :clock-resume t)
+        ("p" "Phone call" entry (file org-default-refile-file)
+         "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
         ("j" "Journal" entry
          (file+datetree (lambda () (concat org-directory "/privat/journal.org")))
          "* %?\nEntered on %U\n  %i\n  %a")))
 
-;; Configure org-present-mode
+;; org-present-mode
 ;; https://github.com/rlister/org-present
 (eval-after-load "org-present"
   '(progn
