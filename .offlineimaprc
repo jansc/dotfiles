@@ -154,6 +154,7 @@ type = Maildir
 # maildirs for you as needed.
 
 localfolders = ~/imap/fastmail
+postsynchook = mu index --maildir ~/imap/fastmail
 
 [Repository RemoteFastmail]
 # And this is the remote repository.  We only support IMAP or Gmail here.
@@ -216,4 +217,3 @@ keepalive = 60
 # is not set.
 
 holdconnectionopen = yes
-
