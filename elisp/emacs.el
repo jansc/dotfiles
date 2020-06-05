@@ -28,7 +28,7 @@
   "Directory for the emacs pkgs and configuration files.
  Default uses `HOME_DIR' as a prefix")
 
-(add-to-list 'load-path "~/elisp")
+(add-to-list 'load-path "~/elisp" "~/elisp/thirdparty")
 
 (defvar MY_DEFAULT_WIDTH 130)
 
@@ -182,6 +182,7 @@
 (require 'emacs-which-key)      ; short cuts
 
 (require 'emacs-dired)          ; Dired mode
+;(require 'ltm-mode)
 
 ;; Mutt support
 (setq auto-mode-list (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
