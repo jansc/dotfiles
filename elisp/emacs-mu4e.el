@@ -101,6 +101,7 @@
             "flag:unread maildir:/fastmail/GMAIL"
             ))
      (mu4e-alert-enable-mode-line-display)
+     (run-at-time 0 60 'mu4e-update-index) 
      (defun js-refresh-mu4e-alert-mode-line ()
        (interactive)
        (mu4e~proc-kill)

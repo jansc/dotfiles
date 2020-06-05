@@ -2,10 +2,18 @@
 (require 'epa-file)
 (epa-file-enable)
 (require 'org-install)
+
+
+;; == Exporters ==
 (require 'ox-confluence) ; From org-contrib
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
+; Enable markdown export
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
+;; == Diary ==
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
@@ -20,12 +28,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
-; Enable markdown export
-(eval-after-load "org"
-  '(require 'ox-md nil t))
-
-;(setq org-agenda-files (list "~/org/gtd" ))
-;(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb) ; FIXME conflicts with org-brain
@@ -116,9 +118,9 @@
 
 (setq org-export-coding-system 'utf-8)
 
-;(setq org-deadline-warning-days 2)
-;(setq org-agenda-skip-deadline-if-done t)
-;(setq org-agenda-skip-scheduled-if-done nil)
+(setq org-deadline-warning-days 2)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
 
 ;; == Tags ==
 ;; Allow setting single tags without the menu
@@ -131,25 +133,27 @@
 (setq org-use-fast-todo-selection t)
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-	(sequence "WAITING(w@/!)" "INACTIVE(i)" "|" "CANCELLED(c@/!)" "MEETING")))
+        (sequence "WAITING(w@/!)" "INACTIVE(i)" "|" "CANCELLED(c@/!)" "MEETING")))
+
 ;; Custom colors for the keywords
 (setq org-todo-keyword-faces
       '(("TODO" :foreground "red" :weight bold)
-	("NEXT" :foreground "blue" :weight bold)
-	("DONE" :foreground "forest green" :weight bold)
-	("WAITING" :foreground "orange" :weight bold)
-	("INACTIVE" :foreground "magenta" :weight bold)
-	("CANCELLED" :foreground "forest green" :weight bold)
-	("MEETING" :foreground "forest green" :weight bold)))
+        ("NEXT" :foreground "blue" :weight bold)
+        ("DONE" :foreground "forest green" :weight bold)
+        ("WAITING" :foreground "orange" :weight bold)
+        ("INACTIVE" :foreground "magenta" :weight bold)
+        ("CANCELLED" :foreground "forest green" :weight bold)
+        ("MEETING" :foreground "forest green" :weight bold)))
+
 ;; Auto-update tags whenever the state is changed
 (setq org-todo-state-tags-triggers
       '(("CANCELLED" ("CANCELLED" . t))
-	("WAITING" ("WAITING" . t))
-	("INACTIVE" ("WAITING") ("INACTIVE" . t))
-	("DONE" ("WAITING") ("INACTIVE"))
-	("TODO" ("WAITING") ("CANCELLED") ("INACTIVE"))
-	("NEXT" ("WAITING") ("CANCELLED") ("INACTIVE"))
-	("DONE" ("WAITING") ("CANCELLED") ("INACTIVE"))))
+        ("WAITING" ("WAITING" . t))
+        ("INACTIVE" ("WAITING") ("INACTIVE" . t))
+        ("DONE" ("WAITING") ("INACTIVE"))
+        ("TODO" ("WAITING") ("CANCELLED") ("INACTIVE"))
+        ("NEXT" ("WAITING") ("CANCELLED") ("INACTIVE"))
+        ("DONE" ("WAITING") ("CANCELLED") ("INACTIVE"))))
 
 ;; == Refiling ==
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
@@ -169,10 +173,9 @@
 (setq org-agenda-start-on-weekday nil)
 
 ;; Files to search for TODOs and scheduled items. 
-(setq org-agenda-files (list (concat org-directory "/todo.org")
-                             (concat org-directory "/gtd.org")
+(setq org-agenda-files (list (concat org-directory "/gtd.org")
                              (concat org-directory "/gtd-private.org")
-                             (concat org-directory "/google.org")
+                             ;(concat org-directory "/google.org")
                              (concat org-directory "/refile.org")))
 
 ;;(setq org-enforce-todo-dependencies t)
@@ -235,4 +238,5 @@
 ;(setq org-caldav-calendar-id "69653928-2c6d-40e4-b3ad-9ebae4d17f21")
 ;(setq org-caldav-calendar-id "b0076281-0332-4ecf-aef1-0ced83c27fe7y")
 (setq org-icalendar-timezone "Europe/Berlin")
+
 (provide 'emacs-org)
