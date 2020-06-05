@@ -1,6 +1,7 @@
 ;; mu4e
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
+(require 'mu4e-alert)
 (require 'smtpmail)
 (require 'mu4e-maildirs-extension)
 (require 'mu4e-contrib)
@@ -93,7 +94,19 @@
                  ;; try to emulate som of the eww key-bindings
                  (local-set-key (kbd "<tab>") 'shr-next-link)
                  (local-set-key (kbd "<backtab>") 'shr-previous-link)))
-
+     (setq mu4e-alert-interesting-mail-query
+           (concat
+            "flag:unread maildir:/fastmail/INBOX "
+            "OR "
+            "flag:unread maildir:/fastmail/GMAIL"
+            ))
+     (mu4e-alert-enable-mode-line-display)
+     (defun js-refresh-mu4e-alert-mode-line ()
+       (interactive)
+       (mu4e~proc-kill)
+       (mu4e-alert-enable-mode-line-display)
+       )
+     (run-with-timer 0 60 'js-refresh-mu4e-alert-mode-line)
      )
   )
 (provide 'emacs-mu4e)
