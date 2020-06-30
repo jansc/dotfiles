@@ -13,7 +13,7 @@
     ("https://pfollansbee.wordpress.com/feed/" blog woodworking)
     ("https://hoveloghage.wordpress.com/feed/" blog woodworking)
     ("https://ben.ttm.sh/blog/feed.rss" blog tilde)
-    ("https://readrust.net/all/feed.rss" planet rust)
+    ;("https://readrust.net/all/feed.rss" planet rust)
     ("https://blog.hackeriet.no/feed.xm" hackerspace blog)
     ("http://www.markgtelfer.co.uk/feed/" blog biology)
     ("http://www.biofokus.no/feeds/rss/" biology)))
