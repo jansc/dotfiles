@@ -38,13 +38,14 @@
        (auto-fill-mode -1))
 
      (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
+
      ;; spell check
-     ;;(add-hook 'mu4e-compose-mode-hook
-     ;;          (defun my-do-compose-stuff ()
-     ;;            "My settings for message composition."
-     ;;            (auto-fill-mode -1))
-     ;;            (set-fill-column 72)
-     ;;            (flyspell-mode)))
+     (add-hook 'mu4e-compose-mode-hook
+               (defun my-do-compose-stuff ()
+                 "My settings for message composition."
+                 (auto-fill-mode -1))
+                 (set-fill-column 72)
+                 (flyspell-mode))
 
      ;; don't keep message buffers around
      (setq message-kill-buffer-on-exit t) 
@@ -68,10 +69,11 @@
      ;;smtpmail-queue-dir  "/home/user/Maildir/queue/cur"
 
      (setq mml2015-use 'epg)
-     (setq mu4e-attachment-dir  (expand-file-name "~/Nedlastinger"))
+     (setq mu4e-attachment-dir  (expand-file-name "~/Downloads"))
      (setq mu4e-maildir-shortcuts
            '( ("/fastmail/INBOX"     . ?i)
               ("/fastmail/INBOX.Archive"   . ?a)
+              ("/fastmail/INBOX.GMAIL"   . ?g)
               ("/fastmail/INBOX.Sent Items"      . ?e)
               ("/fastmail/INBOX.Junk Mail"  . ?j)
               ))
@@ -89,6 +91,7 @@
      (setq mu4e-use-fancy-chars t)
 
      (setq mu4e-html2text-command 'mu4e-shr2text)
+     (setq shr-color-visible-luminance-min 80)
      (add-hook 'mu4e-view-mode-hook
                (lambda()
                  ;; try to emulate som of the eww key-bindings
