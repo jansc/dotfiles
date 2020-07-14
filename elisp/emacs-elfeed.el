@@ -14,6 +14,8 @@
     ("https://hoveloghage.wordpress.com/feed/" blog woodworking)
     ("https://ben.ttm.sh/blog/feed.rss" blog tilde)
     ;("https://readrust.net/all/feed.rss" planet rust)
+    ("https://jonathanabennett.github.io/rss.xml" blog emacs)
+    ("https://irreal.org/blog/?feed=rss2" blog emacs)
     ("https://labs.tomasino.org/index.xml" blog tilde)
     ("https://blog.hackeriet.no/feed.xml" hackerspace blog)
     ("http://www.markgtelfer.co.uk/feed/" blog biology)
