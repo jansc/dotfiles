@@ -19,6 +19,7 @@
     ("https://labs.tomasino.org/index.xml" blog tilde)
     ("https://blog.hackeriet.no/feed.xml" hackerspace blog)
     ("http://www.markgtelfer.co.uk/feed/" blog biology)
+    ("https://analternativenaturalhistoryofsussex.blogspot.com/feeds/posts/default" blog biology)
     ("http://www.biofokus.no/feeds/rss/" biology)))
 (global-set-key (kbd "C-x w") 'elfeed)
 (add-to-list 'evil-emacs-state-modes 'elfeed-search-mode)
