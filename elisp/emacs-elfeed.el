@@ -2,6 +2,8 @@
 (setq elfeed-feeds
   '(("http://nullprogram.com/feed/" blog emacs)
     ("http://endlessparentheses.com/atom.xml" blog emacs)
+    ("https://staticadventures.netlib.re/rss.xml" blog tilde)
+    ("https://www.manueluberti.eu/feed.xml" blog emacs)
     ("https://xkcd.com/atom.xml" comic)
     ("https://hagesumming.no/feed/" blog hage)
     ;("http://planet.lisp.org/rss20.xml" blog lisp)
