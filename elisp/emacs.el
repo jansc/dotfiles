@@ -204,6 +204,16 @@
 ;         (not (server-running-p)))
    (server-start)
 
+;; Enable M-x kill-process (to kill the current buffer's process).
+(put 'kill-process 'interactive-form
+     '(interactive
+       (let ((proc (get-buffer-process (current-buffer))))
+         (if (process-live-p proc)
+             (unless (yes-or-no-p (format "Kill %S? " proc))
+               (error "Process not killed"))
+           (error (format "Buffer %s has no process" (buffer-name))))
+         nil)))
+
 ;Local Variables:
 ;indent-tabs-mode: nil
 ;allout-layout: (-1 : 0)
