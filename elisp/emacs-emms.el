@@ -1,6 +1,8 @@
 (require 'emms)
 (require 'emms-setup)
 (require 'emms-player-mpd)
+(require 'emms-librefm-scrobbler)
+(emms-librefm-scrobbler-enable)
 (require 'emms-info-libtag)
 (setq emms-info-functions '(emms-info-libtag))
 (require 'emms-lyrics)
@@ -20,6 +22,7 @@
 (global-set-key (kbd "C-c +") 'emms-volume-mode-plus)
 (global-set-key (kbd "C-c -") 'emms-volume-mode-minus)
 (define-key mode-specific-map (kbd "e s") 'emms-smart-browse)
+
 ;("<XF86AudioPrev>" . emms-previous)
 ;("<XF86AudioNext>" . emms-next)
 ;("<XF86AudioPlay>" . emms-pause)
