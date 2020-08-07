@@ -125,7 +125,7 @@
 ;;=====================================================================
 ;; Automatically install packages defined in 'package-list
 ;; Temporarily removed mu4e-maildirs-extension and magit
-(setq package-list '(use-package ace-jump-mode ac-php erc evil ledger-mode org-present php-mode php-extras tramp twittering-mode ido rust-mode tide company elfeed one-themes slime slime-company paredit treemacs treemacs-evil treemacs-icons-dired ox-hugo org-caldav mu4e-alert))
+(setq package-list '(use-package ace-jump-mode ac-php erc evil ledger-mode org-present php-mode php-extras tramp twittering-mode ido rust-mode tide company elfeed one-themes slime slime-company paredit treemacs treemacs-evil treemacs-icons-dired ox-hugo org-caldav mu4e-alert emms))
 ;; TODO: After install on fedora 26, the following packages where missing:
 ;; mu4e-maildirs-extension and which-key
 
@@ -161,6 +161,7 @@
     (require 'emacs-zeal))	; Integration of Zeal (on Linux)
 
 
+(require 'emacs-emms)            ; IRC client
 (require 'emacs-erc)            ; IRC client
 (require 'emacs-company)        ; Company-mode for autocompletion
 (require 'emacs-elfeed)         ; RSS-reader
@@ -203,6 +204,16 @@
 ;(if (and (fboundp 'server-running-p) 
 ;         (not (server-running-p)))
    (server-start)
+
+;; Enable M-x kill-process (to kill the current buffer's process).
+(put 'kill-process 'interactive-form
+     '(interactive
+       (let ((proc (get-buffer-process (current-buffer))))
+         (if (process-live-p proc)
+             (unless (yes-or-no-p (format "Kill %S? " proc))
+               (error "Process not killed"))
+           (error (format "Buffer %s has no process" (buffer-name))))
+         nil)))
 
 ;Local Variables:
 ;indent-tabs-mode: nil
