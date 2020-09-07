@@ -26,6 +26,13 @@ if has('autocmd')
         autocmd filetype make setlocal shiftwidth=4
         autocmd filetype make setlocal tabstop=4
     augroup END
+    augroup type_php
+        autocmd!
+        autocmd filetype php setlocal expandtab
+        autocmd filetype php setlocal tabstop=4
+        autocmd filetype php setlocal softtabstop=4
+        autocmd filetype php setlocal shiftwidth=4
+    augroup END
 endif
 
 
@@ -35,6 +42,10 @@ filetype plugin indent on       " Automatically detect file types.
 syntax on                       " Syntax highlighting
 set encoding=utf-8
 scriptencoding utf-8
+
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
 " }}}
 
 
