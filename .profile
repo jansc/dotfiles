@@ -40,7 +40,6 @@ fi
 
 if [[ $platform == 'linux' ]]; then
   export DISPLAY=:0.0
-  export QT_SCALE_FACTOR=2
 fi
 
 export IRCNICK=jansc
