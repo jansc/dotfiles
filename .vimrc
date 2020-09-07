@@ -7,8 +7,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
 Plug 'tpope/vim-speeddating'              " Ctrl-a-magic (needed by
-                                          " vim-orgmode
+                                          " vim-orgmode)
 Plug 'jceb/vim-orgmode'                   " org-mode support
+Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy finder
+Plug 'tomtom/tcomment_vim'                " syntax-aware commenting
+Plug 'airblade/vim-gitgutter'             " git integration
 
 call plug#end()
 
@@ -68,7 +71,7 @@ set mouse=                      " Automatically disable mouse usage
 set mousehide                   " Hide the mouse cursor while typing
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set noshowcmd                   " Don't show the current command
-set relativenumber number       " Use relative line numbers
+set number number               " Use relative line numbers
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set shiftwidth=2
