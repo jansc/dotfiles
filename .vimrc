@@ -11,7 +11,9 @@ Plug 'tpope/vim-speeddating'              " Ctrl-a-magic (needed by
 Plug 'jceb/vim-orgmode'                   " org-mode support
 Plug 'ctrlpvim/ctrlp.vim'                 " Fuzzy finder
 Plug 'tomtom/tcomment_vim'                " syntax-aware commenting
-Plug 'airblade/vim-gitgutter'             " git integration
+Plug 'airblade/vim-gitgutter'             " git diff viewer
+Plug 'tpope/vim-fugitive'                 " git integration
+Plug 'tpope/vim-surround'                 " parantese matching
 
 call plug#end()
 
