@@ -14,7 +14,7 @@ Plug 'tomtom/tcomment_vim'                " syntax-aware commenting
 Plug 'airblade/vim-gitgutter'             " git diff viewer
 Plug 'tpope/vim-fugitive'                 " git integration
 Plug 'tpope/vim-surround'                 " parantese matching
-
+Plug 'preservim/tagbar'                   " show tags of current file
 call plug#end()
 
 """""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""""""""""
@@ -39,6 +39,9 @@ endif
 
 
 """""""""""""" SETTINGS """"""""""""""""""""""""""""""""""""""""""""
+" Tagbar settings:
+nmap <F8> :TagbarToggle<CR>
+
 " miscelanious settings {{{
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " Syntax highlighting
