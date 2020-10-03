@@ -15,6 +15,8 @@ Plug 'airblade/vim-gitgutter'             " git diff viewer
 Plug 'tpope/vim-fugitive'                 " git integration
 Plug 'tpope/vim-surround'                 " parantese matching
 Plug 'preservim/tagbar'                   " show tags of current file
+Plug 'vimwiki/vimwiki'                    " Wiki
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 """""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""""""""""
@@ -41,6 +43,9 @@ endif
 """""""""""""" SETTINGS """"""""""""""""""""""""""""""""""""""""""""
 " Tagbar settings:
 nmap <F8> :TagbarToggle<CR>
+
+" Leader key: space
+nnoremap <silent> <leader> :WhichKey '\'<CR>
 
 " miscelanious settings {{{
 filetype plugin indent on       " Automatically detect file types.
