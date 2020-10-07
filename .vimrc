@@ -47,6 +47,10 @@ nmap <F8> :TagbarToggle<CR>
 " Leader key: space
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 
+" Wiki settings
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \ 'syntax': 'markdown', 'ext': '.md'}]
+
 " miscelanious settings {{{
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " Syntax highlighting
@@ -60,9 +64,13 @@ set undodir=/tmp//
 
 
 " ag support {{{
-if executable("ag")
-    set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+" if executable("ag")
+"     set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
+"     set grepformat=%f:%l:%c:%m,%f:%l:%m
+" endif
+if executable("rg")
+    set grepprg=rg\ --vimgrep
+    set grepformat=%f:%l:%c:%m
 endif
 " }}}
 
