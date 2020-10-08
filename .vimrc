@@ -63,7 +63,7 @@ set undodir=/tmp//
 " }}}
 
 
-" ag support {{{
+" ripgrep support {{{
 " if executable("ag")
 "     set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
 "     set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -87,6 +87,7 @@ set expandtab
 set fileencoding=utf-8
 set foldlevelstart=20
 set foldmethod=manual
+set formatoptions+=j            " Delete the comment character when joining commented lines
 set hidden                      " Allow buffer switching without saving
 set history=1000                " Store a ton of history (default is 20)
 set hlsearch                    " Highlight search terms
