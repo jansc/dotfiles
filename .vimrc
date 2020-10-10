@@ -62,6 +62,9 @@ scriptencoding utf-8
 set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
+
+nmap <F3> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 " }}}
 
 
