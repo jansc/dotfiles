@@ -194,7 +194,8 @@ ssl = yes
 # Fingerprints must be in hexadecimal form without leading '0x':
 # 40 hex digits like bbfe29cf97acb204591edbafe0aa8c8f914287c9.
 
-cert_fingerprint = c3b43678680c605062beffc6fac48d5b0623a27f448f7fa38bd0ab6f673323d4ccb6e841fb8828e4ad174070caef4cbf3a06e3ef86ae2ea605afa35ad7ef3abd
+#cert_fingerprint = c3b43678680c605062beffc6fac48d5b0623a27f448f7fa38bd0ab6f673323d4ccb6e841fb8828e4ad174070caef4cbf3a06e3ef86ae2ea605afa35ad7ef3abd
+cert_fingerprint = 66eeb8c4e9417e79a7b080a22f411e4f9147d8c6f9f38b8df7facaf0f2b18d537f118d3dfae417e06c867e1160ef1c667d13e15e6c100038de309c68d43fb4a1
 
 # Specify the remote user name.
 remoteuser = mecinus@fastmail.fm
