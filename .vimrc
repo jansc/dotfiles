@@ -17,6 +17,8 @@ Plug 'tpope/vim-surround'                 " parantese matching
 Plug 'preservim/tagbar'                   " show tags of current file
 Plug 'vimwiki/vimwiki'                    " Wiki
 Plug 'liuchengxu/vim-which-key'
+Plug 'tpope/vim-endwise'                  " Automatically create end
+                                          " commands
 call plug#end()
 
 """""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""""""""""
