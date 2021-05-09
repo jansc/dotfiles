@@ -2,8 +2,9 @@
 ;;
 (in-package :stumpwm)
 
+(ql:quickload :swank)
 (require 'swank)
-(swank-loader:init)
+;(swank-loader:init)
 (defcommand swank () ()
   (setf stumpwm:*top-level-error-action* :break)
   (swank:create-server :style swank:*communication-style*
@@ -21,23 +22,24 @@
 ;;(load-module "ttf-fonts")
 ;;  (set-font (make-instance 'xft:font :family "Bitstream Vera Sans Mono" :subfamily "Roman" :size 15))
 
-(set-font "-*-lucidatypewriter-bold-r-*-*-*-140-*-*-*-*-*-1")
-(load-module "cpu")
-(load-module "net")
-(load-module "battery-portable")
-(load-module "wifi")
+;(set-font "-*-lucidatypewriter-bold-r-*-*-*-140-*-*-*-*-*-1")
+;(load-module "cpu")
+;(load-module "net")
+;(load-module "battery-portable")
+;(load-module "wifi")
 
 (defvar battery-mode-string "")
-
-(when (probe-file "/sys/class/power_supply/BAT0")
-  (setf battery-mode-string " ^7*%B"
-        battery-portable:*refresh-time* 30))
-
+;
+;(when (probe-file "/sys/class/power_supply/BAT0")
+;  (setf battery-mode-string " ^7*%B"
+;        battery-portable:*refresh-time* 30))
+;
 (setf *mouse-focus-policy* :click)
 (setf *mode-line-timeout* 3)
 (setf *window-format* "%m%n%s%c")
 (setf *screen-mode-line-format*
-      (list "[^B%n^b] %W^> %C %I ^6*%l %d" battery-mode-string))
+      ;(list "[^B%n^b] %W^> %C %I ^6*%l %d" battery-mode-string))
+      (list "[^B%n^b] %W^>  ^6*%d" battery-mode-string))
 (setf *time-modeline-string* "%a %b %e %k:%M")
 (enable-mode-line (current-screen) (current-head) t)
 
