@@ -1,8 +1,7 @@
 
 ;;; The following lines added by ql:add-to-init-file:
 #-quicklisp
-(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
-                                       (user-homedir-pathname))))
+(let ((quicklisp-init #P"/usr/home/jans/quicklisp/setup.lisp"))
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
-(sb-posix:putenv (format nil "SBCL_HOME=~A" #.(or (sb-ext:posix-getenv "SBCL_HOME") "")))
+
