@@ -19,6 +19,7 @@ Plug 'vimwiki/vimwiki'                    " Wiki
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-endwise'                  " Automatically create end
                                           " commands
+Plug 'mitsuhiko/vim-jinja'
 call plug#end()
 
 """""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""""""""""
