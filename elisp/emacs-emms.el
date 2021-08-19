@@ -21,7 +21,7 @@
 (global-set-key (kbd "s-m r") 'emms-player-mpd-update-all-reset-cache)
 (global-set-key (kbd "C-c +") 'emms-volume-mode-plus)
 (global-set-key (kbd "C-c -") 'emms-volume-mode-minus)
-(define-key mode-specific-map (kbd "e s") 'emms-smart-browse)
+;(define-key mode-specific-map (kbd "e s") 'emms-smart-browse)
 
 ;("<XF86AudioPrev>" . emms-previous)
 ;("<XF86AudioNext>" . emms-next)

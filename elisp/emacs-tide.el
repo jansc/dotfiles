@@ -8,7 +8,7 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
-  (setq tide-format-options '(:indentSize 2 :tabSize 2 :basicIndentSize 2))
+  (setq tide-format-options '(:indentSize 4 :tabSize 4 :basicIndentSize 4))
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
