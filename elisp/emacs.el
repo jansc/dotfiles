@@ -38,7 +38,8 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/") t)
+  ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
   (package-initialize)
@@ -177,6 +178,9 @@
 ;;(require 'emacs-csv)          ; comma-separated-value editing package
 ;;(require 'emacs-sql)          ; database interaction
 (require 'emacs-paredit)        ; 
+(require 'emacs-projectile)     ;
+;(require 'emacs-mu4e)           ; email reader
+(require 'emacs-python)         ; Python development
 ;(require 'emacs-mu4e)           ; email reader
 (require 'emacs-rust)           ; rust mode
 (require 'emacs-ui)             ; theme, fonts, modeline and eye candy
