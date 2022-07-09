@@ -13,6 +13,7 @@ export PATH=/usr/local/ravnutilities/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/opt/qt5/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 export TERMINAL=sakura
